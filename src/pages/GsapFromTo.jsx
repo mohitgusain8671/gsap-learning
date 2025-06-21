@@ -1,6 +1,33 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const GsapFromTo = () => {
   // TODO: Implement the gsap.fromTo() method
-
+  useGSAP(()=>{
+    gsap.fromTo('#red-box', {
+      x: 0, // Start position on the x-axis
+      y: 200, // Start position on the y-axis
+      rotation: 360, // Start rotation
+      scale: 1.5, // Start scale
+      borderRadius: "0%", // Start border radius
+      backgroundColor: "red", // Initial background color
+    }, {
+      x: 300, // End position on the x-axis
+      y: 0, // End position on the y-axis
+      rotation: -360, // End rotation
+      scale: 1, // End scale
+      backgroundColor: "blue", // Final background color
+      duration: 2, // Duration of the animation in seconds
+      ease: "bounce.out", // Easing function for smooth animation
+      onComplete: () => {
+        console.log("Animation complete!");
+      },
+      borderRadius: "100%", // End border radius to make it circular
+      yoyo: true, // Reverse the animation back to the original state
+      repeat: -1, // Repeat the animation indefinitely
+      repeatDelay: 1, // Delay before repeating the animation
+    });
+  },[]);
   return (
     <main>
       <h1>GsapFromTo</h1>

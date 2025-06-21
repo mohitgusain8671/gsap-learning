@@ -1,6 +1,25 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const GsapFrom = () => {
   // TODO: Implement the gsap.from() method
-
+  useGSAP(() => {
+    gsap.from('#green-box', {
+      x: 0, // Start position on the x-axis
+      y: 200, // Start position on the y-axis
+      rotation: 360, // Start rotation
+      scale: 1.5, // Start scale
+      backgroundColor: "green", // Initial background color
+      duration: 2, // Duration of the animation in seconds
+      ease: "power1.in", // Easing function for smooth animation
+      onComplete: () => {
+        console.log("Animation complete!");
+      },
+      yoyo: true, // Reverse the animation back to the original state
+      repeat: -1, // Repeat the animation indefinitely
+      repeatDelay: 1, // Delay before repeating the animation
+    })
+  }, []);
   return (
     <main>
       <h1>GsapFrom</h1>
